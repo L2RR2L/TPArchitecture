@@ -1,0 +1,51 @@
+@startuml
+package "exercise_refactored.manager" {
+    class CarManager {
+        + getCarNames(): String
+        + getBestCar(): Car
+    }
+}
+
+package "exercise_refactored.model" {
+    class Car {
+        - _model: String
+        - _brand: String
+        + getId(): String
+        + getModel(): String
+        + getBrand(): String
+    }
+}
+
+package "exercise_refactored.repository" {
+    class CarRepository {
+        + findAll(): List<Car>
+        + findById(carId: String): Car
+    }
+}
+
+package "exercise_refactored.services" {
+    class CarComparatorService {
+        + getBestCar(): Car
+        - compareCars(car1: Car, car2: Car): boolean
+    }
+
+    class CarFormatterService {
+        + getCarNames(): String
+    }
+}
+
+package "exercise_refactored" {
+    class Main {
+        + main(args: String[]): void
+    }
+}
+
+CarManager --> CarFormatterService
+CarManager --> CarComparatorService
+CarFormatterService --> CarRepository
+CarComparatorService --> CarRepository
+CarRepository  *-- "*" Car
+CarFormatterService --> Car
+CarComparatorService --> Car
+Main --> CarManager
+@enduml
