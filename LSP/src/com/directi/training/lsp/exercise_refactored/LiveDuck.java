@@ -1,6 +1,6 @@
-    package com.directi.training.lsp.exercise;
+    package com.directi.training.lsp.exercise_refactored;
 
-    public class Duck
+    public class LiveDuck implements Duck
     {
         public void quack()
         {

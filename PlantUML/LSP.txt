@@ -1,0 +1,33 @@
+@startuml
+package "exercise_refactored" {
+
+    interface Duck {
+        + quack()
+        + swim()
+    }
+
+    interface ElectronicEntity {
+        + turnOn()
+        + turnOff()
+        + isOn(): boolean
+    }
+
+    class LiveDuck {
+    }
+
+    class ElectronicDuck {
+        - _on: boolean
+    }
+
+    class Pool {
+        - quack(ducks: Duck...)
+        - swim(ducks: Duck...)
+        + main(args: String[])
+    }
+
+    Duck <|.. LiveDuck
+    Duck <|.. ElectronicDuck
+    ElectronicEntity <|.. ElectronicDuck
+    Pool --> Duck
+}
+@enduml
