@@ -1,0 +1,34 @@
+@startuml
+package "exercise_refactored" {
+
+    abstract class Resource {
+        - INVALID_RESOURCE_ID: int {static}
+        - availableIds: HashSet<Integer>
+        + {abstract} markBusy(resourceId: int)
+        + {abstract} markFree(resourceId: int)
+        + {abstract} findFree(): int
+    }
+
+    class SpaceSlot {
+    }
+
+    class TimeSlot {
+    }
+
+    class ResourceAllocator {
+        + allocate(resource: Resource): int
+        + free(resource: Resource, resourceId: int)
+    }
+
+    class Main {
+        + main(args: String[])
+    }
+
+    Resource <|-- SpaceSlot
+    Resource <|-- TimeSlot
+    ResourceAllocator --> Resource
+    Main --> ResourceAllocator
+    Main --> SpaceSlot
+    Main --> TimeSlot
+}
+@enduml
