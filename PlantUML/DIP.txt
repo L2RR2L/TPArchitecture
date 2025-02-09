@@ -1,0 +1,23 @@
+@startuml
+
+package "exercise_refactored" {
+
+    interface IEncoder {
+        + encode()
+    }
+
+    class DatabaseEncoder {
+    }
+
+    class FileEncoder {
+    }
+
+    class EncodingClient {
+    }
+
+    IEncoder <|.. DatabaseEncoder
+    IEncoder <|.. FileEncoder
+    EncodingClient --> IEncoder
+}
+
+@enduml
