@@ -1,0 +1,43 @@
+@startuml
+package "exercise_refactored" {
+
+    abstract class Door {
+        - _locked: boolean
+        - _opened: boolean
+        + lock()
+        + unlock()
+        + open()
+        + close()
+    }
+
+    class SensingDoor {
+        + SensingDoor(sensor: Sensor)
+        + proximityCallback()
+    }
+
+    class TimedDoor {
+        - TIME_OUT: int {static}
+        + TimedDoor(timer: Timer)
+        + timeOutCallback()
+    }
+
+    class Sensor {
+        + register(door: SensingDoor)
+        - isPersonClose(): boolean
+    }
+
+    class Timer {
+        + register(timeOut: long, door: TimedDoor)
+    }
+
+    class Main {
+    }
+
+    Door <|-- SensingDoor
+    Door <|-- TimedDoor
+    SensingDoor --> Sensor
+    TimedDoor --> Timer
+    Main --> SensingDoor
+    Main --> TimedDoor
+}
+@enduml

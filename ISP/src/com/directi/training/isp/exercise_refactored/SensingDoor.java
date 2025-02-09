@@ -1,15 +1,10 @@
-package com.directi.training.isp.exercise;
+package com.directi.training.isp.exercise_refactored;
 
 
-public class TimedDoor implements Door
-{
-    private static final int TIME_OUT = 100;
-    private boolean _locked;
-    private boolean _opened;
-
-    public TimedDoor(Timer timer)
+public class SensingDoor extends Door {
+    public SensingDoor(Sensor sensor)
     {
-        timer.register(TIME_OUT, this);
+        sensor.register(this);
     }
 
     @Override
@@ -38,15 +33,8 @@ public class TimedDoor implements Door
         _opened = false;
     }
 
-    @Override
-    public void timeOutCallback()
-    {
-        _locked = true;
-    }
-
-    @Override
     public void proximityCallback()
     {
-        return;
+        _opened = true;
     }
 }
