@@ -1,4 +1,5 @@
 @startuml
+
 package "exercise_refactored" {
 
     abstract class Door {
@@ -10,15 +11,21 @@ package "exercise_refactored" {
         + close()
     }
 
+    interface ISensing {
+        + proximityCallback()
+    }
+
+    interface ITimed {
+        + timeOutCallback()
+    }
+
     class SensingDoor {
         + SensingDoor(sensor: Sensor)
-        + proximityCallback()
     }
 
     class TimedDoor {
         - TIME_OUT: int {static}
         + TimedDoor(timer: Timer)
-        + timeOutCallback()
     }
 
     class Sensor {
@@ -31,13 +38,17 @@ package "exercise_refactored" {
     }
 
     class Main {
+        + main(args: String[])
     }
 
     Door <|-- SensingDoor
     Door <|-- TimedDoor
+    ISensing <|.. SensingDoor
+    ITimed <|.. TimedDoor
     SensingDoor --> Sensor
     TimedDoor --> Timer
     Main --> SensingDoor
     Main --> TimedDoor
 }
+
 @enduml

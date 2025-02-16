@@ -1,18 +1,13 @@
 package com.directi.training.lsp.exercise_refactored;
 
-public class Pool
+public class DuckPool
 {
     public void run()
     {
-        Duck donaldDuck = new LiveDuck();
-        ElectronicDuck electricDuck = new ElectronicDuck();
-        quack(donaldDuck, electricDuck);
-        swim(donaldDuck, electricDuck);
-
-        electricDuck.turnOn();
-
-        quack(donaldDuck, electricDuck);
-        swim(donaldDuck, electricDuck);
+        Duck donaldDuck = new Duck();
+        Duck donaldDuck2 = new Duck();
+        quack(donaldDuck, donaldDuck2);
+        swim(donaldDuck, donaldDuck2);
     }
 
     private void quack(Duck... ducks)
@@ -31,7 +26,7 @@ public class Pool
 
     public static void main(String[] args)
     {
-        Pool pool = new Pool();
+        DuckPool pool = new DuckPool();
         pool.run();
     }
 }

@@ -1,10 +1,9 @@
 package com.directi.training.lsp.exercise_refactored;
 
-public class ElectronicDuck implements Duck, ElectronicEntity
+public class ElectronicDuck
 {
     private boolean _on = false;
 
-    @Override
     public void quack()
     {
         if (_on) {
@@ -14,7 +13,6 @@ public class ElectronicDuck implements Duck, ElectronicEntity
         }
     }
 
-    @Override
     public void swim()
     {
         if (_on) {

@@ -1,7 +1,7 @@
 package com.directi.training.isp.exercise_refactored;
 
 
-public class SensingDoor extends Door {
+public class SensingDoor extends Door implements ISensing {
     public SensingDoor(Sensor sensor)
     {
         sensor.register(this);
@@ -33,6 +33,7 @@ public class SensingDoor extends Door {
         _opened = false;
     }
 
+    @Override
     public void proximityCallback()
     {
         _opened = true;

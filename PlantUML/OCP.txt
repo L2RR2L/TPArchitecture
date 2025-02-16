@@ -2,8 +2,6 @@
 package "exercise_refactored" {
 
     abstract class Resource {
-        - INVALID_RESOURCE_ID: int {static}
-        - availableIds: HashSet<Integer>
         + {abstract} markBusy(resourceId: int)
         + {abstract} markFree(resourceId: int)
         + {abstract} findFree(): int

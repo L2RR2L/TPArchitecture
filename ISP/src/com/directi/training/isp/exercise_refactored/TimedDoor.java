@@ -1,6 +1,6 @@
 package com.directi.training.isp.exercise_refactored;
 
-public class TimedDoor extends Door {
+public class TimedDoor extends Door implements ITimed {
     private static final int TIME_OUT = 100;
 
     public TimedDoor(Timer timer)
@@ -34,6 +34,7 @@ public class TimedDoor extends Door {
         _opened = false;
     }
 
+    @Override
     public void timeOutCallback()
     {
         _locked = true;
