@@ -1,6 +1,6 @@
 package com.directi.training.lsp.exercise_refactored;
 
-public class ElectronicDuck
+public class ElectronicDuck implements IDuck
 {
     private boolean _on = false;
 
